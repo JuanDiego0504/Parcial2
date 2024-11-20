@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <!-- Encabezado estilizado -->
+    <div class="bg-primary text-white p-2">
+        <h4 class="m-0">Upcoming conferences</h4>
+    </div>
+
+    <!-- Tabla de conferencias -->
+    <div class="mt-3">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Starts</th>
+                    <th>Ends</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let conferencia of conferencias" (click)="onSelectConferencia(conferencia)">
+                    <td>{{ conferencia.id }}</td>
+                    <td>
+                        <a href="javascript:void(0)" class="text-primary">{{ conferencia.name }}</a>
+                    </td>
+                    <td>{{ conferencia.starts }}</td>
+                    <td>{{ conferencia.ends }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Upcoming conferences:</strong> {{ upcomingConferencesCount }}</p>
+    </div>
+
+    <!-- Detalle de la conferencia seleccionada -->
+    <div *ngIf="selectedConferencia" class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ selectedConferencia.name }}</h5>
+            <p>
+                <strong>{{ selectedConferencia.starts }} - {{ selectedConferencia.ends }}, {{ selectedConferencia.venue }}</strong>
+            </p>
+            <p class="card-text">{{ selectedConferencia.description }}</p>
+        </div>
+    </div>
+</div>
